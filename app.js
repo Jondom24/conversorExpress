@@ -15,13 +15,18 @@ const saltRounds = 10;
 
 app.use(cors(
   {
-    origin: 'http://localhost:5173',
+    origin: process.env.URLFRONTEND || 'http://localhost:5174',
     credentials: true,
   }
 ))
 
 app.use(session({
-  secret: 'asjdajkhekjhfakjhkajec23enh'
+  secret: process.env.SECRETSESSION || 'asjdajkhekjhfakjhkajec23enh',
+  proxy: process.env.NODE_ENV === 'production',
+  cookie:{
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'node'
+  }
 }))
 
 app.get('/login', login)
