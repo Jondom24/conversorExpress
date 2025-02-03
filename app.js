@@ -13,8 +13,7 @@ const { obtenerUsuarios, eliminarUsuario } = require('./usuarios');
 const validar = require('./validar');
 const saltRounds = 10;
 mysql://root:CGWQbZLEzeqwmkADikxwTJvCaaBhMPxl@viaduct.proxy.rlwy.net:26048/railway
-app.use(cors(
-  {
+app.use(cors({
     origin: process.env.URLFRONTEND || 'http://localhost:5174',
     credentials: true,
   }
@@ -25,9 +24,13 @@ app.use(session({
   proxy: process.env.NODE_ENV === 'production',
   cookie:{
     secure: process.env.NODE_ENV === 'production',
-    sameSite: 'node'
+    sameSite: 'none'
   }
 }))
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
 app.get('/login', login)
 
