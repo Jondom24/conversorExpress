@@ -17,14 +17,12 @@ app.use(cors({
     credentials: true
   }))
 
-app.use(session({
-  secret: process.env.SECRETSESSION || 'asjdajkhekjhfakjhkajec23enh',
-  proxy: process.env.NODE_ENV === 'production',
-  cookie:{
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'none'
-  }
-}))
+  app.use(session({
+    secret: 'asjdajkhekjhfakjhkajec23enh',
+    resave: false, 
+    saveUninitialized: false, 
+    cookie: { secure: false } // Usa "true" en producción con HTTPS
+  })) 
 
 app.get('/login', login)
 
