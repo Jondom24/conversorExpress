@@ -1,5 +1,5 @@
-const express = require("express"); // Asegúrate de importar Express
-const app = express();
+const express = require('express')
+const app = express()
 const port = process.env.PORT || 3000
 // Get the client
 const cors = require('cors')
@@ -31,9 +31,9 @@ app.use(session({
   store: sessionStore
 }))
 
-app.get("/", (req, res) => {
-  res.send("¡Servidor funcionando!");
-});
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
 app.get('/login', login)
 
@@ -46,5 +46,5 @@ app.get('/usuarios', obtenerUsuarios)
 app.delete('/usuarios', eliminarUsuario)
 
 app.listen(port, () => {
-  console.log(`Servidor corriendo en el puerto ${port}`);
-});
+  console.log(`Example app listening on port ${port}`)
+}) 
