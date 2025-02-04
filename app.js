@@ -13,19 +13,17 @@ const validar = require('./validar');
 const saltRounds = 10;
 mysql://root:YioqinwcCdoAzjnxPFbxrSmgeXsXfJoE@monorail.proxy.rlwy.net:13027/railway
 app.use(cors({
-  origin: process.env.HOSTFRONTEND || 'http://localhost:5173',
-  credentials: true
-}))
-
-const produccion = (process.env.NODE_ENV === 'production')
+    origin: process.env.URLFRONTEND || 'http://localhost:5174',
+    credentials: true
+  }))
 
 app.use(session({
-  secret: 'asdlfkfso3234o23lsdflasdfasdfasdfoasdf',
-  cookie: {
-    sameSite: 'none',
-    secure: produccion
-  },
-  proxy: produccion
+  secret: process.env.SECRETSESSION || 'asjdajkhekjhfakjhkajec23enh',
+  proxy: process.env.NODE_ENV === 'production',
+  cookie:{
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'none'
+  }
 }))
 
 app.get('/login', login)
