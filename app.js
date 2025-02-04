@@ -26,6 +26,10 @@ app.use(session({
   }
 }))
 
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
 app.get('/login', login)
 
 app.get('/validar', validar)
