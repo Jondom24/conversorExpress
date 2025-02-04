@@ -1,6 +1,9 @@
 const express = require('express')
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
 // Get the client
 const mysql = require('mysql2/promise');
 const cors = require('cors')
@@ -12,7 +15,7 @@ const registro = require('./registro');
 const { obtenerUsuarios, eliminarUsuario } = require('./usuarios');
 const validar = require('./validar');
 const saltRounds = 10;
-mysql://root:CGWQbZLEzeqwmkADikxwTJvCaaBhMPxl@viaduct.proxy.rlwy.net:26048/railway
+mysql://root:YioqinwcCdoAzjnxPFbxrSmgeXsXfJoE@monorail.proxy.rlwy.net:13027/railway
 app.use(cors({
     origin: process.env.URLFRONTEND || 'http://localhost:5174',
     credentials: true,
@@ -27,10 +30,6 @@ app.use(session({
     sameSite: 'none'
   }
 }))
-
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
 
 app.get('/login', login)
 
