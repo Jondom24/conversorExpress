@@ -21,10 +21,6 @@ app.use(cors({
   }))
   const sessionStore = new MySQLStore({}/* session store options */, connection);
 
-  app.listen(port, () => {
-    console.log(`Servidor corriendo en http://localhost:${port}`);
-  });
-
 app.use(session({
   secret: process.env.SECRETSESSION || 'asjdajkhekjhfakjhkajec23enh',
   proxy: process.env.NODE_ENV === 'production',
