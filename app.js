@@ -14,7 +14,6 @@ const connection = require('./conexion')
 const saltRounds = 10;
 const MySQLStore = require('express-mysql-session')(session);
 
-mysql://root:YioqinwcCdoAzjnxPFbxrSmgeXsXfJoE@monorail.proxy.rlwy.net:13027/railway
 app.use(cors({
     origin: process.env.URLFRONTEND || 'http://localhost:5174',
     credentials: true
